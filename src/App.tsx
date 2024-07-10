@@ -1,37 +1,42 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import wooviLogo from "/woovi.svg";
 import { useTranslation } from "react-i18next";
-import { useThemes } from "./context/themeContext";
-import { Container, Typography } from "@mui/material";
+import { useThemes } from "@/context/theme-context";
+import { Box, Button, Container, Typography } from "@mui/material";
+import { useMemo } from "react";
+import { NAMES } from "@/constants";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   const { toggleTheme } = useThemes();
 
   const { t } = useTranslation();
 
+  const randomName = useMemo(() => {
+    const arrayNamesLength = NAMES.length;
+    const randomNumber = Math.floor(Math.random() * arrayNamesLength);
+
+    return NAMES[randomNumber];
+  }, []);
+
   return (
-    <Container>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <Typography>Vite + React</Typography>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <button onClick={toggleTheme}>togle theme</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+    <Container
+      sx={{
+        py: "72px",
+        display: "flex",
+        height: "100dvh",
+        placeItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <Box sx={{ textAlign: "center", marginBottom: "40px" }}>
+        <img src={wooviLogo} alt="woovi logo" />
+        <Typography variant="h1" sx={{ fontSize: 24, fontWeight: 900 }}>
+          {randomName}, {t("main:title")}
+        </Typography>
+      </Box>
+
+      <Button onClick={toggleTheme} variant="contained">
+        togle theme
+      </Button>
       <p className="read-the-docs">{t("title:main")}</p>
     </Container>
   );

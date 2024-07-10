@@ -14,6 +14,7 @@ export const useThemes = () => useContext(ThemeContext);
 
 export const ThemeManagerProvider = ({ children }: { children: ReactNode }) => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
   const [mode, setMode] = useLocalStorage("@theme", prefersDarkMode);
 
   const colorMode = useMemo(

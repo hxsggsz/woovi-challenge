@@ -1,5 +1,10 @@
 {
-  "title": {
-    "main": "Olá do i18n"
+  "main": {
+    "title": "como você quer pagar?"
+  },
+  "header": {
+    "select": {
+      "label": "Linguagem"
+    }
   }
 }
