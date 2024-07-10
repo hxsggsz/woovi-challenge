@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { useTranslation } from "react-i18next";
 import { useThemes } from "./context/themeContext";
-import { Box, Container, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,7 +13,7 @@ function App() {
   const { t } = useTranslation();
 
   return (
-    <Box>
+    <Container>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -33,7 +33,7 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">{t("title:main")}</p>
-    </Box>
+    </Container>
   );
 }
 
