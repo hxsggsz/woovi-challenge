@@ -32,7 +32,13 @@ export const ThemeManagerProvider = ({ children }: { children: ReactNode }) => {
         palette: {
           mode: mode ? "dark" : "light",
           primary: {
-            main: "#7253b6",
+            main: "#133A6F",
+          },
+          info: {
+            main: "#B2B2B2",
+          },
+          secondary: {
+            main: "#03D69D",
           },
           error: {
             main: red.A400,
