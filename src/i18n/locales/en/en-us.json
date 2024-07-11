@@ -4,7 +4,10 @@
     "card": {
       "win": "Win",
       "of-cashback": "of cashback",
-      "pix-cashback": "back to your bank account"
+      "pix-cashback": "back to your bank account",
+      "pix-part": "Pix part",
+      "interest": "interest",
+      "banner-message": "Best part option"
     }
   },
   "header": {

@@ -4,7 +4,10 @@
     "card": {
       "win": "Ganhe",
       "of-cashback": "de cashback",
-      "pix-cashback": "de volta no seu Pix na hora"
+      "pix-cashback": "de volta no seu Pix na hora",
+      "pix-part": "Pix parcelado",
+      "interest": "de juros",
+      "banner-message": "Melhor opção de parcelamento"
     }
   },
   "header": {

@@ -1,29 +1,28 @@
 import { CheckCircle, RadioButtonUnchecked } from "@mui/icons-material";
 import { Box, Typography, Checkbox } from "@mui/material";
 import { formatCurrency } from "@/utils/formatCurrency";
-import { useRef } from "react";
 
 export interface CardProps {
   label?: string;
   multiplier: string;
   value: number;
+  roundedborder?: "top" | "bottom" | "full" | "none";
   greenMessage?: React.ReactNode;
   greyMessage?: React.ReactNode;
   bannerMessage?: React.ReactNode;
   checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+const borderStyles = {
+  top: "10px 10px 0 0",
+  bottom: "0 0 10px 10px",
+  full: "10px",
+  none: "0",
+};
+
 function Card(props: CardProps) {
-  const checkboxRef = useRef<HTMLButtonElement | null>(null);
-
-  const clickCheckbox = () => {
-    if (!checkboxRef.current) return;
-    checkboxRef.current.click();
-  };
-
   const renderLabel = () => (
     <Box
-      onClick={clickCheckbox}
       sx={{
         left: "0",
         px: "20px",
@@ -82,7 +81,7 @@ function Card(props: CardProps) {
         cursor: "pointer",
         maxWidth: "430px",
         border: "2px solid",
-        borderRadius: "10px",
+        borderRadius: borderStyles[props.roundedborder ?? "none"],
         borderColor: "info.main",
       }}
     >
@@ -107,7 +106,6 @@ function Card(props: CardProps) {
 
         <Checkbox
           id="checkbox"
-          ref={checkboxRef}
           color="secondary"
           sx={{ p: "2px" }}
           onChange={props.checkCard}

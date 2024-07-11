@@ -11,6 +11,7 @@ function Header() {
         right: 0,
         p: "8px",
         gap: "8px",
+        zIndex: "20",
         display: "flex",
         position: "fixed",
         justifyContent: "flex-end",
