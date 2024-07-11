@@ -1,13 +1,11 @@
 import wooviLogo from "/woovi.svg";
 import { useTranslation } from "react-i18next";
-import { useThemes } from "@/context/theme-context";
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { useMemo } from "react";
 import { NAMES } from "@/constants";
+import Card from "./components/card";
 
 function App() {
-  const { toggleTheme } = useThemes();
-
   const { t } = useTranslation();
 
   const randomName = useMemo(() => {
@@ -34,10 +32,7 @@ function App() {
         </Typography>
       </Box>
 
-      <Button onClick={toggleTheme} variant="contained">
-        togle theme
-      </Button>
-      <p className="read-the-docs">{t("title:main")}</p>
+      <Card />
     </Container>
   );
 }

@@ -36,7 +36,8 @@ export const ThemeManagerProvider = ({ children }: { children: ReactNode }) => {
             main: "#133A6F",
           },
           info: {
-            main: "#B2B2B2",
+            main: "#E5E5E5",
+            "900": "#4D4D4D",
           },
           secondary: {
             main: "#03D69D",
