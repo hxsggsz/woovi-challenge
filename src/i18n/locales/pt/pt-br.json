@@ -1,6 +1,11 @@
 {
   "main": {
-    "title": "como você quer pagar?"
+    "title": "como você quer pagar?",
+    "card": {
+      "win": "Ganhe",
+      "of-cashback": "de cashback",
+      "pix-cashback": "de volta no seu Pix na hora"
+    }
   },
   "header": {
     "select": {

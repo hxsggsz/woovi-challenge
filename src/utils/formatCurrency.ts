@@ -1,11 +1,9 @@
-export function formatCurrency(
-  input: number,
-  lng = "pt-BR",
-  digits = 2,
-): string {
-  const formatter = new Intl.NumberFormat(lng, {
+import { LANGUAGE } from "@/constants";
+
+export function formatCurrency(input: number, digits = 2): string {
+  const formatter = new Intl.NumberFormat(LANGUAGE, {
     style: "currency",
-    currency: lng === "pt-BR" ? "BRL" : "USD",
+    currency: LANGUAGE === "pt-BR" ? "BRL" : "USD",
     minimumFractionDigits: digits,
   });
 

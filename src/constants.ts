@@ -20,3 +20,5 @@ export const NAMES = [
   "James",
   "Ashley",
 ];
+
+export const LANGUAGE = localStorage.getItem("@lang") ?? navigator.language;

@@ -1,6 +1,11 @@
 {
   "main": {
-    "title": "how do you want to pay?"
+    "title": "how do you want to pay?",
+    "card": {
+      "win": "Win",
+      "of-cashback": "of cashback",
+      "pix-cashback": "back to your bank account"
+    }
   },
   "header": {
     "select": {
