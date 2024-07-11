@@ -56,7 +56,7 @@ function App() {
         </Typography>
       </Box>
 
-      <Card item={mainBill} />
+      <Card {...mainBill} />
     </Container>
   );
 }

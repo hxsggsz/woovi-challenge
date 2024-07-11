@@ -2,11 +2,7 @@ import { CheckCircle, RadioButtonUnchecked } from "@mui/icons-material";
 import { Box, Typography, Checkbox } from "@mui/material";
 import { formatCurrency } from "@/utils/formatCurrency";
 
-interface CardProps {
-  item: ItemContent;
-}
-
-interface ItemContent {
+export interface CardProps {
   label?: string;
   multiplier: string;
   value: number;
@@ -28,7 +24,7 @@ function Card(props: CardProps) {
         borderRadius: "100px",
       }}
     >
-      {props.item.label}
+      {props.label}
     </Box>
   );
 
@@ -38,13 +34,13 @@ function Card(props: CardProps) {
         color: "secondary.main",
       }}
     >
-      {props.item.greenMessage}
+      {props.greenMessage}
     </Box>
   );
 
   const renderGreymessage = () => (
     <Typography color="info.main" fontWeight={800}>
-      {props.item.greyMessage}
+      {props.greyMessage}
     </Typography>
   );
 
@@ -63,7 +59,7 @@ function Card(props: CardProps) {
         clipPath: "polygon(0% 0%, 100% 0, 96% 50%, 100% 100%, 0% 100%)",
       }}
     >
-      {props.item.bannerMessage}
+      {props.bannerMessage}
     </Box>
   );
 
@@ -85,15 +81,15 @@ function Card(props: CardProps) {
           justifyContent: "space-between",
         }}
       >
-        {props.item.label && renderLabel()}
+        {props.label && renderLabel()}
 
         <Box sx={{ gap: "4px", display: "flex" }}>
           <Typography fontWeight={800} fontSize={24}>
-            {props.item.multiplier}
+            {props.multiplier}
           </Typography>
 
           <Typography fontWeight={600} fontSize={24}>
-            {formatCurrency(props.item.value)}
+            {formatCurrency(props.value)}
           </Typography>
         </Box>
 
@@ -105,9 +101,9 @@ function Card(props: CardProps) {
         />
       </Box>
 
-      {props.item.greenMessage && renderGreenMessage()}
-      {props.item.greyMessage && renderGreymessage()}
-      {props.item.bannerMessage && renderBanner()}
+      {props.greenMessage && renderGreenMessage()}
+      {props.greyMessage && renderGreymessage()}
+      {props.bannerMessage && renderBanner()}
     </Box>
   );
 }
