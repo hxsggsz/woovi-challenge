@@ -5,26 +5,16 @@ import { nanoid } from "nanoid";
 import { useTranslation } from "react-i18next";
 
 interface PaymentPartProps {
-  name: string;
+  handleCheckCard: (value: CheckCardProps) => void;
 }
 
 function PaymentPart(props: PaymentPartProps) {
   const { t } = useTranslation();
 
-  const handleCheckCard = (value: CheckCardProps) => {
-    const paymentData = {
-      ...value,
-      name: props.name,
-    };
-
-    const base64PaymentData = btoa(JSON.stringify(paymentData));
-    localStorage.setItem("@p", base64PaymentData);
-  };
-
   const paymentPart: CardProps[] = [
     {
       id: nanoid(),
-      checkCard: handleCheckCard,
+      checkCard: props.handleCheckCard,
       label: t("main:card:pix-part"),
       value: 15_300,
       multiplier: 2,
@@ -35,7 +25,7 @@ function PaymentPart(props: PaymentPartProps) {
       ),
     },
     {
-      checkCard: handleCheckCard,
+      checkCard: props.handleCheckCard,
       id: nanoid(),
       value: 10_196.66,
       multiplier: 3,
@@ -46,7 +36,7 @@ function PaymentPart(props: PaymentPartProps) {
       ),
     },
     {
-      checkCard: handleCheckCard,
+      checkCard: props.handleCheckCard,
       id: nanoid(),
       value: 7_725,
       multiplier: 4,
@@ -66,7 +56,7 @@ function PaymentPart(props: PaymentPartProps) {
     },
     {
       id: nanoid(),
-      checkCard: handleCheckCard,
+      checkCard: props.handleCheckCard,
       value: 6_300,
       multiplier: 5,
       greyMessage: (
@@ -77,7 +67,7 @@ function PaymentPart(props: PaymentPartProps) {
     },
     {
       id: nanoid(),
-      checkCard: handleCheckCard,
+      checkCard: props.handleCheckCard,
       value: 5_283.33,
       multiplier: 6,
       greyMessage: (
@@ -89,7 +79,7 @@ function PaymentPart(props: PaymentPartProps) {
 
     {
       id: nanoid(),
-      checkCard: handleCheckCard,
+      checkCard: props.handleCheckCard,
       value: 4_542.85,
       multiplier: 7,
       greyMessage: (

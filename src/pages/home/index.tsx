@@ -1,4 +1,4 @@
-import Card, { CardProps } from "@/components/card";
+import Card, { CardProps, CheckCardProps } from "@/components/card";
 import { NAMES } from "@/constants";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { Box, Container, Typography } from "@mui/material";
@@ -6,12 +6,31 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import wooviLogo from "/woovi.svg";
 import PaymentPart from "./components/paymentPart";
+import { nanoid } from "nanoid";
 
 export function Home() {
   const { t } = useTranslation();
 
+  const randomName = useMemo(() => {
+    const arrayNamesLength = NAMES.length;
+    const randomNumber = Math.floor(Math.random() * arrayNamesLength);
+
+    return NAMES[randomNumber];
+  }, []);
+
+  const handleCheckCard = (value: CheckCardProps) => {
+    const paymentData = {
+      ...value,
+      name: randomName,
+    };
+
+    const base64PaymentData = btoa(JSON.stringify(paymentData));
+    localStorage.setItem("@p", base64PaymentData);
+  };
+
   const mainBill: CardProps = {
-    checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
+    id: nanoid(),
+    checkCard: handleCheckCard,
     label: "Pix",
     value: 30_500,
     multiplier: 1,
@@ -35,13 +54,6 @@ export function Home() {
     ),
   };
 
-  const randomName = useMemo(() => {
-    const arrayNamesLength = NAMES.length;
-    const randomNumber = Math.floor(Math.random() * arrayNamesLength);
-
-    return NAMES[randomNumber];
-  }, []);
-
   return (
     <Container
       sx={{
@@ -61,7 +73,7 @@ export function Home() {
 
       <Card roundedborder="full" {...mainBill} />
 
-      <PaymentPart name={randomName} />
+      <PaymentPart handleCheckCard={handleCheckCard} />
     </Container>
   );
 }
