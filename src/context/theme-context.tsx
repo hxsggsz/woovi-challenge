@@ -49,6 +49,9 @@ export const ThemeManagerProvider = ({ children }: { children: ReactNode }) => {
         },
         typography: {
           fontFamily: ["Nunito", "Roboto", "sans-serif"].join(","),
+          button: {
+            textTransform: "none",
+          },
         },
       }),
     [mode],

@@ -15,6 +15,9 @@
       "full-payment-title": "pague sua conta de {{value}} pelo Pix",
       "part-payment-title": "pague a entrada de {{value}} pelo Pix"
     },
+    "qrcode": {
+      "button": "Clique para copiar o QRCODE"
+    },
     "date": "Prazo de pagamento",
     "id": "Identificador"
   },

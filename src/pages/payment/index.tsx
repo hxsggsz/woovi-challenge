@@ -2,8 +2,10 @@ import { LANGUAGE } from "@/constants";
 import wooviLogo from "/woovi.svg";
 import usePaymentData from "@/hooks/usePaymentData";
 import { formatCurrency } from "@/utils/formatCurrency";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import QRCode from "react-qr-code";
+import FileCopyIcon from "@mui/icons-material/FileCopy";
 
 function Payment() {
   const { payment } = usePaymentData();
@@ -30,6 +32,30 @@ function Payment() {
           )}
         </Typography>
       </Box>
+
+      <Box
+        sx={{
+          border: "2px solid",
+          borderColor: "secondary.main",
+          borderRadius: "10px",
+          padding: "10px",
+        }}
+      >
+        <QRCode
+          size={332}
+          viewBox={`0 0 332 332`}
+          value="https://hxsggsz.vercel.app/"
+          style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+        />
+      </Box>
+
+      <Button
+        variant="contained"
+        sx={{ mt: "20px", fontSize: "16px", gap: "10px" }}
+      >
+        {t("payment:qrcode:button")}
+        <FileCopyIcon />
+      </Button>
 
       <Typography sx={{ color: "info.main" }}>{t("payment:date")}:</Typography>
       <Typography sx={{ fontWeight: 800 }}>
