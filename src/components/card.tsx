@@ -3,6 +3,7 @@ import { Box, Typography, Checkbox } from "@mui/material";
 import { formatCurrency } from "@/utils/formatCurrency";
 
 export interface CardProps {
+  id: string;
   label?: string;
   multiplier: string;
   value: number;

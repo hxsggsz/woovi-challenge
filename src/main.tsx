@@ -4,6 +4,7 @@ import App from "./App.tsx";
 import { ThemeManagerProvider } from "@/context/theme-context.tsx";
 import Header from "@/components/header.tsx";
 import CssBaseline from "@mui/material/CssBaseline";
+import Footer from "./components/footer.tsx";
 import "./i18n";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Header />
       <CssBaseline />
       <App />
+      <Footer />
     </ThemeManagerProvider>
   </React.StrictMode>,
 );

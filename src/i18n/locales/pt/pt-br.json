@@ -14,5 +14,8 @@
     "select": {
       "label": "Linguagem"
     }
+  },
+  "footer": {
+    "message": "Pagamento 100% seguro"
   }
 }

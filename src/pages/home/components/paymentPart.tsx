@@ -1,6 +1,7 @@
 import Card, { CardProps } from "@/components/card";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { Typography, Box } from "@mui/material";
+import { nanoid } from "nanoid";
 import { useTranslation } from "react-i18next";
 
 function PaymentPart() {
@@ -8,6 +9,7 @@ function PaymentPart() {
 
   const paymentPart: CardProps[] = [
     {
+      id: nanoid(),
       checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
       label: t("main:card:pix-part"),
       value: 15_300,
@@ -20,6 +22,7 @@ function PaymentPart() {
     },
     {
       checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
+      id: nanoid(),
       value: 10_196.66,
       multiplier: "3x",
       greyMessage: (
@@ -30,6 +33,7 @@ function PaymentPart() {
     },
     {
       checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
+      id: nanoid(),
       value: 7_725,
       multiplier: "4x",
       greyMessage: (
@@ -47,6 +51,7 @@ function PaymentPart() {
       ),
     },
     {
+      id: nanoid(),
       checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
       value: 6_300,
       multiplier: "5x",
@@ -57,6 +62,7 @@ function PaymentPart() {
       ),
     },
     {
+      id: nanoid(),
       checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
       value: 5_283.33,
       multiplier: "6x",
@@ -68,6 +74,7 @@ function PaymentPart() {
     },
 
     {
+      id: nanoid(),
       checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
       value: 4_542.85,
       multiplier: "7x",
@@ -86,7 +93,7 @@ function PaymentPart() {
       return (
         <Card
           {...part}
-          key={part.value}
+          key={part.id}
           roundedborder={firstCard ? "top" : lastCard ? "bottom" : "none"}
         />
       );
