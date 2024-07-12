@@ -2,15 +2,13 @@ import { red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ThemeProvider, useMediaQuery } from "@mui/material";
-import { createContext, useContext, ReactNode, useMemo } from "react";
+import { createContext, ReactNode, useMemo } from "react";
 
-interface IThemeContext {
+export interface IThemeContext {
   mode: boolean;
   toggleTheme: () => void;
 }
 export const ThemeContext = createContext({} as IThemeContext);
-
-export const useThemes = () => useContext(ThemeContext);
 
 export const ThemeManagerProvider = ({ children }: { children: ReactNode }) => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
