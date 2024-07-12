@@ -10,6 +10,14 @@
       "banner-message": "Melhor opção de parcelamento"
     }
   },
+  "payment": {
+    "title": {
+      "full-payment-title": "pague sua conta de {{value}} pelo Pix",
+      "part-payment-title": "pague a entrada de {{value}} pelo Pix"
+    },
+    "date": "Prazo de pagamento",
+    "id": "Identificador"
+  },
   "header": {
     "select": {
       "label": "Linguagem"

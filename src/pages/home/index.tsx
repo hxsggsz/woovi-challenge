@@ -7,9 +7,12 @@ import { useTranslation } from "react-i18next";
 import wooviLogo from "/woovi.svg";
 import PaymentPart from "./components/paymentPart";
 import { nanoid } from "nanoid";
+import { useNavigate } from "react-router";
 
-export function Home() {
+function Home() {
   const { t } = useTranslation();
+
+  const navigate = useNavigate();
 
   const randomName = useMemo(() => {
     const arrayNamesLength = NAMES.length;
@@ -19,13 +22,18 @@ export function Home() {
   }, []);
 
   const handleCheckCard = (value: CheckCardProps) => {
+    const today = new Date();
+    const date = new Date(today.setMonth(today.getMonth() + 1));
+
     const paymentData = {
       ...value,
+      date,
       name: randomName,
     };
 
     const base64PaymentData = btoa(JSON.stringify(paymentData));
     localStorage.setItem("@p", base64PaymentData);
+    navigate("/payment");
   };
 
   const mainBill: CardProps = {
@@ -77,3 +85,5 @@ export function Home() {
     </Container>
   );
 }
+
+export default Home;

@@ -10,6 +10,14 @@
       "banner-message": "Best part option"
     }
   },
+  "payment": {
+    "title": {
+      "full-payment-title": "pay your invoice entry {{value}} with Pix",
+      "part-payment-title": "pay your invoice {{value}} with Pix"
+    },
+    "date": "Payment date",
+    "id": "Identifier"
+  },
   "header": {
     "select": {
       "label": "Language"
