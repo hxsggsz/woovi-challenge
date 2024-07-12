@@ -1,19 +1,33 @@
-import Card, { CardProps } from "@/components/card";
+import Card, { CardProps, CheckCardProps } from "@/components/card";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { Typography, Box } from "@mui/material";
 import { nanoid } from "nanoid";
 import { useTranslation } from "react-i18next";
 
-function PaymentPart() {
+interface PaymentPartProps {
+  name: string;
+}
+
+function PaymentPart(props: PaymentPartProps) {
   const { t } = useTranslation();
+
+  const handleCheckCard = (value: CheckCardProps) => {
+    const paymentData = {
+      ...value,
+      name: props.name,
+    };
+
+    const base64PaymentData = btoa(JSON.stringify(paymentData));
+    localStorage.setItem("@p", base64PaymentData);
+  };
 
   const paymentPart: CardProps[] = [
     {
       id: nanoid(),
-      checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
+      checkCard: handleCheckCard,
       label: t("main:card:pix-part"),
       value: 15_300,
-      multiplier: "2x",
+      multiplier: 2,
       greyMessage: (
         <Typography sx={{ fontWeight: 600 }}>
           Total: {formatCurrency(30_600)}
@@ -21,10 +35,10 @@ function PaymentPart() {
       ),
     },
     {
-      checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
+      checkCard: handleCheckCard,
       id: nanoid(),
       value: 10_196.66,
-      multiplier: "3x",
+      multiplier: 3,
       greyMessage: (
         <Typography sx={{ fontWeight: 600 }}>
           Total: {formatCurrency(30_620)}
@@ -32,10 +46,10 @@ function PaymentPart() {
       ),
     },
     {
-      checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
+      checkCard: handleCheckCard,
       id: nanoid(),
       value: 7_725,
-      multiplier: "4x",
+      multiplier: 4,
       greyMessage: (
         <Typography sx={{ fontWeight: 600 }}>
           Total: {formatCurrency(30_900)}
@@ -52,9 +66,9 @@ function PaymentPart() {
     },
     {
       id: nanoid(),
-      checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
+      checkCard: handleCheckCard,
       value: 6_300,
-      multiplier: "5x",
+      multiplier: 5,
       greyMessage: (
         <Typography sx={{ fontWeight: 600 }}>
           Total: {formatCurrency(31_500)}
@@ -63,21 +77,21 @@ function PaymentPart() {
     },
     {
       id: nanoid(),
-      checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
+      checkCard: handleCheckCard,
       value: 5_283.33,
-      multiplier: "6x",
+      multiplier: 6,
       greyMessage: (
         <Typography sx={{ fontWeight: 600 }}>
-          Total: {formatCurrency(31_699_98)}
+          Total: {formatCurrency(31_699.98)}
         </Typography>
       ),
     },
 
     {
       id: nanoid(),
-      checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
+      checkCard: handleCheckCard,
       value: 4_542.85,
-      multiplier: "7x",
+      multiplier: 7,
       greyMessage: (
         <Typography sx={{ fontWeight: 600 }}>
           Total: {formatCurrency(31_800)}

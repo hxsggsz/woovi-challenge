@@ -15,7 +15,7 @@ function Header() {
         display: "flex",
         position: "fixed",
         justifyContent: "flex-end",
-        backdropFilter: "blur(4px)",
+        backdropFilter: "blur(2px)",
       }}
     >
       <ToggleTheme />

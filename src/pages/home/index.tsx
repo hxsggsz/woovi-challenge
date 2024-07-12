@@ -14,7 +14,7 @@ export function Home() {
     checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => console.log(ev),
     label: "Pix",
     value: 30_500,
-    multiplier: "1x",
+    multiplier: 1,
     greenMessage: (
       <Typography sx={{ fontWeight: 600 }}>
         {t("main:card:win")}{" "}
@@ -61,7 +61,7 @@ export function Home() {
 
       <Card roundedborder="full" {...mainBill} />
 
-      <PaymentPart />
+      <PaymentPart name={randomName} />
     </Container>
   );
 }

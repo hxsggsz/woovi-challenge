@@ -3,16 +3,22 @@ import { Box, Typography, Checkbox } from "@mui/material";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { useState } from "react";
 
+export interface CheckCardProps {
+  id: string;
+  multiplier: number;
+  value: number;
+}
+
 export interface CardProps {
   id: string;
   label?: string;
-  multiplier: string;
+  multiplier: number;
   value: number;
   roundedborder?: "top" | "bottom" | "full" | "none";
   greenMessage?: React.ReactNode;
   greyMessage?: React.ReactNode;
   bannerMessage?: React.ReactNode;
-  checkCard: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  checkCard: (values: CheckCardProps) => void;
 }
 
 const borderStyles = {
@@ -27,7 +33,11 @@ function Card(props: CardProps) {
 
   const handleCheck = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(ev.target.checked);
-    props.checkCard(ev);
+    props.checkCard({
+      id: props.id,
+      value: props.value,
+      multiplier: props.multiplier,
+    });
   };
 
   const renderLabel = () => (
@@ -56,11 +66,7 @@ function Card(props: CardProps) {
     </Box>
   );
 
-  const renderGreymessage = () => (
-    <Typography color="info.main" fontWeight={800}>
-      {props.greyMessage}
-    </Typography>
-  );
+  const renderGreymessage = () => props.greyMessage;
 
   const renderBanner = () => (
     <Box
@@ -105,7 +111,7 @@ function Card(props: CardProps) {
 
         <Box sx={{ gap: "4px", display: "flex" }}>
           <Typography fontWeight={800} fontSize={24}>
-            {props.multiplier}
+            {props.multiplier}x
           </Typography>
 
           <Typography fontWeight={600} fontSize={24}>
