@@ -16,11 +16,13 @@
       "part-payment-title": "pague a entrada de {{value}} pelo Pix"
     },
     "qrcode": {
-      "button": "Clique para copiar o QRCODE"
+      "button": "Clique para copiar o QRCODE",
+      "alert-success": "QRCODE copiado com sucesso!"
     },
     "date": "Prazo de pagamento",
     "id": "Identificador"
   },
+  "error": "Algo deu errado, por favor tente novamente",
   "header": {
     "select": {
       "label": "Linguagem"

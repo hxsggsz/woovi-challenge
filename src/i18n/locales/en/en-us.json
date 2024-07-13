@@ -16,11 +16,13 @@
       "part-payment-title": "pay your invoice {{value}} with Pix"
     },
     "qrcode": {
-      "button": "Click to copy the QRCODE"
+      "button": "Click to copy the QRCODE",
+      "alert-success": "Copied QRCODE to clipboard with success!"
     },
     "date": "Payment date",
     "id": "Identifier"
   },
+  "error": "Something went wrong, please try again",
   "header": {
     "select": {
       "label": "Language"

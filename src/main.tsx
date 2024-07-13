@@ -6,14 +6,17 @@ import Header from "@/components/header.tsx";
 import CssBaseline from "@mui/material/CssBaseline";
 import Footer from "./components/footer.tsx";
 import "./i18n";
+import { AlertProvider } from "./context/alert-context.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeManagerProvider>
-      <Header />
-      <CssBaseline />
-      <App />
-      <Footer />
+      <AlertProvider>
+        <Header />
+        <CssBaseline />
+        <App />
+        <Footer />
+      </AlertProvider>
     </ThemeManagerProvider>
   </React.StrictMode>,
 );

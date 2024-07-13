@@ -7,11 +7,26 @@ import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import PaymentStepper from "./components/payment-stepper";
+import { useAlert } from "@/context/useAlert";
 
 function Payment() {
+  const { alert } = useAlert();
+
   const { payment } = usePaymentData();
 
   const { t } = useTranslation();
+
+  const qrcodeValue = "https://hxsggsz.vercel.app/";
+
+  const copyQrcode = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert(t("payment:qrcode:alert-success"), "success");
+    } catch (error) {
+      alert(t("error"), "error");
+      console.error(error);
+    }
+  };
 
   return (
     <Container
@@ -25,6 +40,7 @@ function Payment() {
     >
       <Box sx={{ textAlign: "center", marginBottom: "40px" }}>
         <img src={wooviLogo} alt="woovi logo" />
+
         <Typography variant="h1" sx={{ fontSize: 24, fontWeight: 800 }}>
           {payment.name},{" "}
           {t(
@@ -44,13 +60,14 @@ function Payment() {
       >
         <QRCode
           size={332}
+          value={qrcodeValue}
           viewBox={`0 0 332 332`}
-          value="https://hxsggsz.vercel.app/"
           style={{ height: "auto", maxWidth: "100%", width: "100%" }}
         />
       </Box>
 
       <Button
+        onClick={() => copyQrcode(qrcodeValue)}
         variant="contained"
         sx={{ mt: "20px", fontSize: "16px", gap: "10px" }}
       >
