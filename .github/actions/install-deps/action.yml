@@ -20,7 +20,7 @@ runs:
       with:
         node-version: ${{ inputs.NODE_VERSION }}
 
-    - uses: pnpm/action-setup@v2
+    - uses: pnpm/action-setup@v4
       name: Install pnpm
       with:
         version: ${{ inputs.PNPM_VERSION }}
@@ -41,4 +41,4 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: pnpm install --frozen-lockfile -r
+      run: pnpm install
