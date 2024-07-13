@@ -6,6 +6,7 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
+import PaymentStepper from "./components/payment-stepper";
 
 function Payment() {
   const { payment } = usePaymentData();
@@ -62,6 +63,8 @@ function Payment() {
         {new Date(payment.date).toLocaleDateString(LANGUAGE)} -{" "}
         {new Date(payment.date).toLocaleTimeString(LANGUAGE)}
       </Typography>
+
+      <PaymentStepper />
 
       <Typography sx={{ color: "info.main" }}>{t("payment:id")}:</Typography>
       <Typography sx={{ fontWeight: 800 }}>{payment.id}</Typography>
