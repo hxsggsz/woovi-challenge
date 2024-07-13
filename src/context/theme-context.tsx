@@ -4,11 +4,11 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ThemeProvider, useMediaQuery } from "@mui/material";
 import { createContext, ReactNode, useMemo } from "react";
 
-export interface IThemeContext {
+export interface ThemeContextProps {
   mode: boolean;
   toggleTheme: () => void;
 }
-export const ThemeContext = createContext({} as IThemeContext);
+export const ThemeContext = createContext({} as ThemeContextProps);
 
 export const ThemeManagerProvider = ({ children }: { children: ReactNode }) => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
