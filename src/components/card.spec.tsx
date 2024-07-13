@@ -11,7 +11,7 @@ import userEvent from "@testing-library/user-event";
 const makeSut = ({
   label = "label",
   value = 30,
-  multiplier = "1x",
+  multiplier = 1,
   checkCard = vi.fn(),
   greyMessage = <div>grey</div>,
   greenMessage = <div>green</div>,
@@ -20,6 +20,7 @@ const makeSut = ({
 }: Partial<CardProps>): RenderResult =>
   render(
     <Card
+      id="unique-id"
       label={label}
       value={value}
       checkCard={checkCard}
