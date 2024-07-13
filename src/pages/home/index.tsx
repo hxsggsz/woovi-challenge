@@ -33,7 +33,7 @@ function Home() {
 
     const base64PaymentData = btoa(JSON.stringify(paymentData));
     localStorage.setItem("@p", base64PaymentData);
-    navigate("/payment");
+    navigate("/woovi-challenge/payment");
   };
 
   const mainBill: CardProps = {

@@ -11,7 +11,7 @@ function usePaymentData() {
   const localPaymentEncrypted = localStorage.getItem("@p");
 
   if (!localPaymentEncrypted) {
-    navigate("/");
+    navigate("/woovi-challenge/");
     return { payment: {} as PaymentData };
   }
 

@@ -5,11 +5,11 @@ import Payment from "./pages/payment";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/woovi-challenge/",
       element: <Home />,
     },
     {
-      path: "/payment",
+      path: "/woovi-challenge/payment",
       element: <Payment />,
     },
   ]);
