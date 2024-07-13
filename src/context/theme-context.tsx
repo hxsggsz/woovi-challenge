@@ -40,6 +40,7 @@ export const ThemeManagerProvider = ({ children }: { children: ReactNode }) => {
           },
           secondary: {
             main: "#03D69D",
+            "50": "rgba(3, 214, 157, 0.1)",
           },
           error: {
             main: red.A400,

@@ -28,12 +28,13 @@ function Home() {
     const paymentData = {
       ...value,
       date,
+      activePayment: [0],
       name: randomName,
     };
 
+    navigate("/woovi-challenge/payment");
     const base64PaymentData = btoa(JSON.stringify(paymentData));
     localStorage.setItem("@p", base64PaymentData);
-    navigate("/woovi-challenge/payment");
   };
 
   const mainBill: CardProps = {

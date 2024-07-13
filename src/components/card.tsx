@@ -33,11 +33,14 @@ function Card(props: CardProps) {
 
   const handleCheck = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(ev.target.checked);
-    props.checkCard({
-      id: props.id,
-      value: props.value,
-      multiplier: props.multiplier,
-    });
+    // simulate a api call
+    setTimeout(() => {
+      props.checkCard({
+        id: props.id,
+        value: props.value,
+        multiplier: props.multiplier,
+      });
+    }, 1500);
   };
 
   const renderLabel = () => (
@@ -96,6 +99,7 @@ function Card(props: CardProps) {
         cursor: "pointer",
         maxWidth: "430px",
         border: "2px solid",
+        bgcolor: checked ? "secondary.50" : "",
         borderRadius: borderStyles[props.roundedborder ?? "none"],
         borderColor: checked ? "secondary.main" : "info.main",
       }}
