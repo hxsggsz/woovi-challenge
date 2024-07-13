@@ -5,11 +5,13 @@ import ToggleLang from "@/components/toggle-lang";
 function Header() {
   return (
     <Box
+      component="header"
       sx={{
         top: 0,
         width: 1,
         right: 0,
-        p: "8px",
+        pt: "8px",
+        px: "24px",
         gap: "8px",
         zIndex: "20",
         display: "flex",

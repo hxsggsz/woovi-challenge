@@ -2,7 +2,7 @@ import { LANGUAGE } from "@/constants";
 import wooviLogo from "/woovi.svg";
 import usePaymentData from "@/hooks/usePaymentData";
 import { formatCurrency } from "@/utils/formatCurrency";
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, styled, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
@@ -28,11 +28,24 @@ function Payment() {
     }
   };
 
+  const Container = styled(Box)(({ theme }) => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%",
+    gap: "20px",
+    [theme.breakpoints.up("lg")]: {
+      flexDirection: "row",
+    },
+  }));
+
   return (
-    <Container
+    <Box
       sx={{
-        py: "72px",
+        pt: "72px",
+        px: "24px",
         display: "flex",
+        width: 1,
         minHeight: "100dvh",
         placeItems: "center",
         flexDirection: "column",
@@ -50,42 +63,55 @@ function Payment() {
         </Typography>
       </Box>
 
-      <Box
-        sx={{
-          border: "2px solid",
-          borderColor: "secondary.main",
-          borderRadius: "10px",
-          padding: "10px",
-        }}
-      >
-        <QRCode
-          size={332}
-          value={qrcodeValue}
-          viewBox={`0 0 332 332`}
-          style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-        />
-      </Box>
+      <Container>
+        <Box
+          sx={{
+            display: "flex",
+            placeItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Box
+            sx={{
+              border: "2px solid",
+              borderColor: "secondary.main",
+              borderRadius: "10px",
+              width: "332px",
+              padding: "10px",
+            }}
+          >
+            <QRCode
+              size={332}
+              value={qrcodeValue}
+              viewBox={`0 0 332 332`}
+              style={{ height: "auto", maxWidth: "100%" }}
+            />
+          </Box>
 
-      <Button
-        onClick={() => copyQrcode(qrcodeValue)}
-        variant="contained"
-        sx={{ mt: "20px", fontSize: "16px", gap: "10px" }}
-      >
-        {t("payment:qrcode:button")}
-        <FileCopyIcon />
-      </Button>
+          <Button
+            onClick={() => copyQrcode(qrcodeValue)}
+            variant="contained"
+            sx={{ mt: "20px", fontSize: "16px", gap: "10px" }}
+          >
+            {t("payment:qrcode:button")}
+            <FileCopyIcon />
+          </Button>
 
-      <Typography sx={{ color: "info.main" }}>{t("payment:date")}:</Typography>
-      <Typography sx={{ fontWeight: 800 }}>
-        {new Date(payment.date).toLocaleDateString(LANGUAGE)} -{" "}
-        {new Date(payment.date).toLocaleTimeString(LANGUAGE)}
-      </Typography>
+          <Typography sx={{ color: "info.main" }}>
+            {t("payment:date")}:
+          </Typography>
+          <Typography sx={{ fontWeight: 800 }}>
+            {new Date(payment.date).toLocaleDateString(LANGUAGE)} -{" "}
+            {new Date(payment.date).toLocaleTimeString(LANGUAGE)}
+          </Typography>
+        </Box>
 
-      <PaymentStepper />
+        <PaymentStepper />
+      </Container>
 
       <Typography sx={{ color: "info.main" }}>{t("payment:id")}:</Typography>
       <Typography sx={{ fontWeight: 800 }}>{payment.id}</Typography>
-    </Container>
+    </Box>
   );
 }
 
