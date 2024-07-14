@@ -57,7 +57,16 @@ function PaymentStepper(props: PaymentStepperProps) {
     ));
 
   return (
-    <Stepper sx={{ width: 1 }} activeStep={1} orientation="vertical">
+    <Stepper
+      sx={{
+        width: 1,
+        pb: "20px",
+        borderBottom: "2px solid",
+        borderColor: "info.50",
+      }}
+      activeStep={1}
+      orientation="vertical"
+    >
       {renderSteps()}
     </Stepper>
   );

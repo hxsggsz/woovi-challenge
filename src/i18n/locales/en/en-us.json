@@ -15,6 +15,10 @@
       "full-payment-title": "pay your invoice entry {{value}} with Pix",
       "part-payment-title": "pay your invoice {{value}} with Pix"
     },
+    "accordion": {
+      "summary": "How it works?",
+      "content": "You can pay by scanning a QR code. Then, enter the amount to be paid and confirm the transaction, which will be completed in seconds. To pay with a card, choose this option in the Woovi app, enter the card details (number, expiration date, security code), and confirm the transaction."
+    },
     "full": "Pay with Pix",
     "installment-pix": "entry with Pix",
     "credit-card": "with card",

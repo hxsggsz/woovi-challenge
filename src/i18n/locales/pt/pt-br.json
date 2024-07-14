@@ -19,6 +19,10 @@
       "button": "Clique para copiar o QRCODE",
       "alert-success": "QRCODE copiado com sucesso!"
     },
+    "accordion": {
+      "summary": "Como funciona?",
+      "content": "Você pode pagar escaneando um QR code. Depois, digite o valor a ser pago e confirme a transação, que será concluída em segundos. Para pagar com cartão, escolha essa opção no aplicativo Woovi, insira os dados do cartão (número, validade, código de segurança) e confirme a transação."
+    },
     "full": "Pague no Pix",
     "installment-pix": "ª entrada no Pix",
     "credit-card": "ª no cartão",

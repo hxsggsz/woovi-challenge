@@ -2,12 +2,21 @@ import { LANGUAGE } from "@/constants";
 import wooviLogo from "/woovi.svg";
 import usePaymentData from "@/hooks/usePaymentData";
 import { formatCurrency } from "@/utils/formatCurrency";
-import { Box, Button, styled, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Button,
+  styled,
+  Typography,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
 import QRCode from "react-qr-code";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import PaymentStepper from "./components/payment-stepper";
 import { useAlert } from "@/context/useAlert";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 function Payment() {
   const { alert } = useAlert();
@@ -40,6 +49,19 @@ function Payment() {
       flexDirection: "row",
     },
   }));
+
+  const CustomAccordion = styled(Accordion)(({ theme }) => {
+    return {
+      background: "inherit",
+      border: 0,
+      boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
+      borderBottom: "2px solid",
+      borderColor: theme.palette.info.main,
+      "&::before": {
+        opacity: 0,
+      },
+    };
+  });
 
   return (
     <Box
@@ -108,7 +130,39 @@ function Payment() {
           </Typography>
         </Box>
 
-        <PaymentStepper {...payment} />
+        <Box>
+          <PaymentStepper {...payment} />
+
+          <Box
+            sx={{
+              pb: "20px",
+              pt: "20px",
+              display: "flex",
+              borderBottom: "2px solid",
+              borderColor: "info.50",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography>CET: 0.5%</Typography>
+            <Typography>
+              Total: {formatCurrency(payment.value * payment.multiplier)}
+            </Typography>
+          </Box>
+
+          <CustomAccordion>
+            <AccordionSummary
+              expandIcon={<ArrowDownwardIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <Typography>{t("payment:accordion:summary")}</Typography>
+            </AccordionSummary>
+
+            <AccordionDetails>
+              <Typography>{t("payment:accordion:content")}</Typography>
+            </AccordionDetails>
+          </CustomAccordion>
+        </Box>
       </Container>
 
       <Typography sx={{ color: "info.main" }}>{t("payment:id")}:</Typography>
