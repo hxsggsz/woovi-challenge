@@ -36,7 +36,9 @@ function usePaymentData() {
   };
 
   useEffect(() => {
-    !payment.name && navigate("/woovi-challenge");
+    if (payment.multiplier <= payment.activePayment || !payment.name) {
+      navigate("/woovi-challenge");
+    }
   }, [navigate, payment]);
 
   return { payment, advanceActivePayment };
