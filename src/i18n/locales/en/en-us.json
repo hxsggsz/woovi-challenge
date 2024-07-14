@@ -10,6 +10,9 @@
       "banner-message": "Best part option"
     }
   },
+  "pix-payment": {
+    "title": "Doing the payment..."
+  },
   "payment": {
     "title": {
       "full-payment-title": "pay your invoice entry {{value}} with Pix",

@@ -4,13 +4,11 @@ import { formatCurrency } from "@/utils/formatCurrency";
 import { useState } from "react";
 
 export interface CheckCardProps {
-  id: string;
   multiplier: number;
   value: number;
 }
 
 export interface CardProps {
-  id: string;
   label?: string;
   multiplier: number;
   value: number;
@@ -31,10 +29,10 @@ const borderStyles = {
 function Card(props: CardProps) {
   const [checked, setChecked] = useState(false);
 
-  const handleCheck = async (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheck = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(ev.target.checked);
+    console.log(checked, ev.target.checked);
     props.checkCard({
-      id: props.id,
       value: props.value,
       multiplier: props.multiplier,
     });
@@ -42,6 +40,8 @@ function Card(props: CardProps) {
 
   const renderLabel = () => (
     <Box
+      component="label"
+      htmlFor={`checkbox-${props.value}`}
       sx={{
         left: "0",
         px: "20px",
@@ -121,10 +121,11 @@ function Card(props: CardProps) {
         </Box>
 
         <Checkbox
-          id="checkbox"
+          value={checked}
           color="secondary"
           sx={{ p: "2px" }}
           onChange={handleCheck}
+          id={`checkbox-${props.value}`}
           checkedIcon={<CheckCircle />}
           icon={<RadioButtonUnchecked />}
         />

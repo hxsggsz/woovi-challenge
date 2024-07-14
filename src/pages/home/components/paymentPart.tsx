@@ -1,7 +1,6 @@
 import Card, { CardProps, CheckCardProps } from "@/components/card";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { Typography, Box } from "@mui/material";
-import { nanoid } from "nanoid";
 import { useTranslation } from "react-i18next";
 
 interface PaymentPartProps {
@@ -13,7 +12,6 @@ function PaymentPart(props: PaymentPartProps) {
 
   const paymentPart: CardProps[] = [
     {
-      id: nanoid(),
       checkCard: props.handleCheckCard,
       label: t("main:card:pix-part"),
       value: 15_300,
@@ -26,7 +24,6 @@ function PaymentPart(props: PaymentPartProps) {
     },
     {
       checkCard: props.handleCheckCard,
-      id: nanoid(),
       value: 10_196.66,
       multiplier: 3,
       greyMessage: (
@@ -37,7 +34,6 @@ function PaymentPart(props: PaymentPartProps) {
     },
     {
       checkCard: props.handleCheckCard,
-      id: nanoid(),
       value: 7_725,
       multiplier: 4,
       greyMessage: (
@@ -55,7 +51,6 @@ function PaymentPart(props: PaymentPartProps) {
       ),
     },
     {
-      id: nanoid(),
       checkCard: props.handleCheckCard,
       value: 6_300,
       multiplier: 5,
@@ -66,7 +61,6 @@ function PaymentPart(props: PaymentPartProps) {
       ),
     },
     {
-      id: nanoid(),
       checkCard: props.handleCheckCard,
       value: 5_283.33,
       multiplier: 6,
@@ -78,7 +72,6 @@ function PaymentPart(props: PaymentPartProps) {
     },
 
     {
-      id: nanoid(),
       checkCard: props.handleCheckCard,
       value: 4_542.85,
       multiplier: 7,
@@ -94,10 +87,11 @@ function PaymentPart(props: PaymentPartProps) {
     paymentPart.map((part, index) => {
       const firstCard = index === 0;
       const lastCard = index === paymentPart.length - 1;
+
       return (
         <Card
+          key={index}
           {...part}
-          key={part.id}
           roundedborder={firstCard ? "top" : lastCard ? "bottom" : "none"}
         />
       );

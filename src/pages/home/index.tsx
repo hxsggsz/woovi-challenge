@@ -6,13 +6,15 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import wooviLogo from "/woovi.svg";
 import PaymentPart from "./components/paymentPart";
-import { nanoid } from "nanoid";
 import { useNavigate } from "react-router";
+import { usePayment } from "@/context/usePayment";
 
 function Home() {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
+
+  const { updatePayment } = usePayment();
 
   const randomName = useMemo(() => {
     const arrayNamesLength = NAMES.length;
@@ -32,15 +34,13 @@ function Home() {
       name: randomName,
     };
 
-    const base64PaymentData = btoa(JSON.stringify(paymentData));
-    localStorage.setItem("@p", base64PaymentData);
+    updatePayment(paymentData);
 
     // simulate an api call
     setTimeout(() => navigate("/woovi-challenge/payment"), 1000);
   };
 
   const mainBill: CardProps = {
-    id: nanoid(),
     checkCard: handleCheckCard,
     label: "Pix",
     value: 30_500,

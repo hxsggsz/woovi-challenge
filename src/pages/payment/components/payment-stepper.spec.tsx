@@ -20,7 +20,7 @@ describe("payment-stepper", () => {
   describe("when initialize", () => {
     it("renders the component correctly", () => {
       makeSut({});
-      expect(screen.getByText(/1/i)).toBeInTheDocument();
+      expect(screen.getByText(/payment:full/i)).toBeInTheDocument();
     });
 
     describe("when multiplier is equals to one", () => {
