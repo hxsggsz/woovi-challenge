@@ -15,6 +15,9 @@
       "full-payment-title": "pay your invoice entry {{value}} with Pix",
       "part-payment-title": "pay your invoice {{value}} with Pix"
     },
+    "full": "Pay with Pix",
+    "installment-pix": "entry with Pix",
+    "credit-card": "with card",
     "qrcode": {
       "button": "Click to copy the QRCODE",
       "alert-success": "Copied QRCODE to clipboard with success!"

@@ -19,6 +19,9 @@
       "button": "Clique para copiar o QRCODE",
       "alert-success": "QRCODE copiado com sucesso!"
     },
+    "full": "Pague no Pix",
+    "installment-pix": "ª entrada no Pix",
+    "credit-card": "ª no cartão",
     "date": "Prazo de pagamento",
     "id": "Identificador"
   },

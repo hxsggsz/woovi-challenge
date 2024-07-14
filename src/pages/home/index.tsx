@@ -28,7 +28,7 @@ function Home() {
     const paymentData = {
       ...value,
       date,
-      activePayment: [0],
+      activePayment: 0,
       name: randomName,
     };
 

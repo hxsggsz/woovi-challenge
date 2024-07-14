@@ -31,10 +31,11 @@ function Payment() {
   const Container = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    justifyContent: "center",
     width: "100%",
     gap: "20px",
     [theme.breakpoints.up("lg")]: {
+      alignItems: "start",
       flexDirection: "row",
     },
   }));
@@ -42,10 +43,10 @@ function Payment() {
   return (
     <Box
       sx={{
+        width: 1,
         pt: "72px",
         px: "24px",
         display: "flex",
-        width: 1,
         minHeight: "100dvh",
         placeItems: "center",
         flexDirection: "column",
@@ -97,7 +98,7 @@ function Payment() {
             <FileCopyIcon />
           </Button>
 
-          <Typography sx={{ color: "info.main" }}>
+          <Typography sx={{ color: "info.main", pt: "30px" }}>
             {t("payment:date")}:
           </Typography>
           <Typography sx={{ fontWeight: 800 }}>
@@ -106,7 +107,7 @@ function Payment() {
           </Typography>
         </Box>
 
-        <PaymentStepper />
+        <PaymentStepper {...payment} />
       </Container>
 
       <Typography sx={{ color: "info.main" }}>{t("payment:id")}:</Typography>

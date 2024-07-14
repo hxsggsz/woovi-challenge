@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 interface PaymentData extends CheckCardProps {
   name: string;
   date: Date;
+  activePayment: number;
 }
 
 function usePaymentData() {
