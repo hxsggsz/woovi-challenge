@@ -7,7 +7,7 @@ import { nanoid } from "nanoid";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { useTranslation } from "react-i18next";
 
-interface PaymentStepperProps {
+export interface PaymentStepperProps {
   value: number;
   multiplier: number;
   activePayment: number;
