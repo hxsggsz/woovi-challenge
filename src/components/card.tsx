@@ -31,16 +31,13 @@ const borderStyles = {
 function Card(props: CardProps) {
   const [checked, setChecked] = useState(false);
 
-  const handleCheck = (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheck = async (ev: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(ev.target.checked);
-    // simulate a api call
-    setTimeout(() => {
-      props.checkCard({
-        id: props.id,
-        value: props.value,
-        multiplier: props.multiplier,
-      });
-    }, 1500);
+    props.checkCard({
+      id: props.id,
+      value: props.value,
+      multiplier: props.multiplier,
+    });
   };
 
   const renderLabel = () => (

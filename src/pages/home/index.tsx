@@ -32,9 +32,11 @@ function Home() {
       name: randomName,
     };
 
-    navigate("/woovi-challenge/payment");
     const base64PaymentData = btoa(JSON.stringify(paymentData));
     localStorage.setItem("@p", base64PaymentData);
+
+    // simulate an api call
+    setTimeout(() => navigate("/woovi-challenge/payment"), 1000);
   };
 
   const mainBill: CardProps = {
