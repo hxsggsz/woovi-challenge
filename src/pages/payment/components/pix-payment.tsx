@@ -17,6 +17,7 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useTranslation } from "react-i18next";
 import { usePayment } from "@/context/usePayment";
+import { nanoid } from "nanoid";
 
 function PixPayment() {
   const { alert } = useAlert();
@@ -174,7 +175,7 @@ function PixPayment() {
       </Container>
 
       <Typography sx={{ color: "info.main" }}>{t("payment:id")}:</Typography>
-      <Typography sx={{ fontWeight: 800 }}>{payment.id}</Typography>
+      <Typography sx={{ fontWeight: 800 }}>{nanoid()}</Typography>
     </Box>
   );
 }

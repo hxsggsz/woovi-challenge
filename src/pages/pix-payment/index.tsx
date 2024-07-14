@@ -18,7 +18,7 @@ function PixPayment() {
   }, []);
 
   return (
-    <Box>
+    <Box sx={{ py: "72px" }}>
       <Typography>{t("pix-payment:title")}</Typography>
     </Box>
   );
