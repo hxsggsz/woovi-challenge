@@ -47,7 +47,7 @@ function PaymentStepper(props: PaymentStepperProps) {
             />
           }
         >
-          {++index}
+          {props.multiplier > 1 && ++index}
           {renderLabel(index)}
         </StepLabel>
         <Typography sx={{ fontWeight: 800 }}>
