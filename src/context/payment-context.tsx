@@ -1,29 +1,27 @@
 import { CheckCardProps } from "@/components/card";
-import { useEffect, useState } from "react";
+import { decodePaymentData } from "@/utils/decodePaymentData";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-interface PaymentData extends CheckCardProps {
+export interface PaymentData extends CheckCardProps {
   name: string;
   date: Date;
   activePayment: number;
 }
 
-function decodePaymentData() {
-  const localPaymentEncrypted = localStorage.getItem("@p");
-
-  if (!localPaymentEncrypted) {
-    return {} as PaymentData;
-  }
-
-  const paymentDataDecoded = atob(localPaymentEncrypted);
-  return JSON.parse(paymentDataDecoded) as PaymentData;
+export interface PaymentContextProps {
+  payment: PaymentData;
+  advanceActivePayment: () => void;
 }
 
-function usePaymentData() {
-  const navigate = useNavigate();
+export const PaymentContext = createContext({} as PaymentContextProps);
+
+export const PaymentProvider = ({ children }: React.PropsWithChildren) => {
   const [payment, setPayment] = useState<PaymentData>(() =>
     decodePaymentData(),
   );
+
+  const navigate = useNavigate();
 
   const advanceActivePayment = () => {
     setPayment((prev) => ({
@@ -37,11 +35,14 @@ function usePaymentData() {
 
   useEffect(() => {
     if (payment.multiplier <= payment.activePayment || !payment.name) {
+      localStorage.removeItem("@p");
       navigate("/woovi-challenge");
     }
   }, [navigate, payment]);
 
-  return { payment, advanceActivePayment };
-}
-
-export default usePaymentData;
+  return (
+    <PaymentContext.Provider value={{ payment, advanceActivePayment }}>
+      {children}
+    </PaymentContext.Provider>
+  );
+};
