@@ -1,4 +1,5 @@
 import { CheckCardProps } from "@/components/card";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 interface PaymentData extends CheckCardProps {
@@ -7,19 +8,38 @@ interface PaymentData extends CheckCardProps {
   activePayment: number;
 }
 
-function usePaymentData() {
-  const navigate = useNavigate();
+function decodePaymentData() {
   const localPaymentEncrypted = localStorage.getItem("@p");
 
   if (!localPaymentEncrypted) {
-    navigate("/woovi-challenge/");
-    return { payment: {} as PaymentData };
+    return {} as PaymentData;
   }
 
   const paymentDataDecoded = atob(localPaymentEncrypted);
-  const payment = JSON.parse(paymentDataDecoded) as PaymentData;
+  return JSON.parse(paymentDataDecoded) as PaymentData;
+}
 
-  return { payment };
+function usePaymentData() {
+  const navigate = useNavigate();
+  const [payment, setPayment] = useState<PaymentData>(() =>
+    decodePaymentData(),
+  );
+
+  const advanceActivePayment = () => {
+    setPayment((prev) => ({
+      ...prev,
+      activePayment: ++prev.activePayment,
+    }));
+
+    const encryptedUpdatedPayment = btoa(JSON.stringify(payment));
+    localStorage.setItem("@p", encryptedUpdatedPayment);
+  };
+
+  useEffect(() => {
+    !payment.name && navigate("/woovi-challenge");
+  }, [navigate, payment]);
+
+  return { payment, advanceActivePayment };
 }
 
 export default usePaymentData;

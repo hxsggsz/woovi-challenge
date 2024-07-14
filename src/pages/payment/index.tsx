@@ -12,7 +12,7 @@ import { useAlert } from "@/context/useAlert";
 function Payment() {
   const { alert } = useAlert();
 
-  const { payment } = usePaymentData();
+  const { payment, advanceActivePayment } = usePaymentData();
 
   const { t } = useTranslation();
 
@@ -22,6 +22,7 @@ function Payment() {
     try {
       await navigator.clipboard.writeText(text);
       alert(t("payment:qrcode:alert-success"), "success");
+      advanceActivePayment();
     } catch (error) {
       alert(t("error"), "error");
       console.error(error);
