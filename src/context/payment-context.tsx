@@ -34,14 +34,17 @@ export const PaymentProvider = ({ children }: React.PropsWithChildren) => {
   const advanceActivePayment = () => {
     setPayment((prev) => ({
       ...prev,
-      activePayment: ++prev.activePayment,
+      activePayment: prev.activePayment++,
     }));
 
     saveEncryptedPayment(payment);
   };
+
+  // sync the state with the pix payment page
   const onStorageUpdate = (e: StorageEvent) => {
     const { key, newValue } = e;
     if (key === "@p") {
+      console.log(newValue);
       const decodedPayment = decodePaymentData(newValue!);
       setPayment(decodedPayment);
     }

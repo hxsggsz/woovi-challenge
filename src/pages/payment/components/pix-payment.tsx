@@ -1,4 +1,3 @@
-import wooviLogo from "/woovi.svg";
 import { LANGUAGE } from "@/constants";
 import { formatCurrency } from "@/utils/formatCurrency";
 import {
@@ -17,7 +16,6 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useTranslation } from "react-i18next";
 import { usePayment } from "@/context/usePayment";
-import { nanoid } from "nanoid";
 
 function PixPayment() {
   const { alert } = useAlert();
@@ -84,18 +82,6 @@ function PixPayment() {
         flexDirection: "column",
       }}
     >
-      <Box sx={{ textAlign: "center", marginBottom: "40px" }}>
-        <img src={wooviLogo} alt="woovi logo" />
-
-        <Typography variant="h1" sx={{ fontSize: 24, fontWeight: 800 }}>
-          {payment.name},{" "}
-          {t(
-            `payment:title:${payment.multiplier === 1 ? "full-payment-title" : "part-payment-title"}`,
-            { value: formatCurrency(payment.value) },
-          )}
-        </Typography>
-      </Box>
-
       <Container>
         <Box
           sx={{
@@ -173,9 +159,6 @@ function PixPayment() {
           </CustomAccordion>
         </Box>
       </Container>
-
-      <Typography sx={{ color: "info.main" }}>{t("payment:id")}:</Typography>
-      <Typography sx={{ fontWeight: 800 }}>{nanoid()}</Typography>
     </Box>
   );
 }

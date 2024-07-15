@@ -31,7 +31,6 @@ function Card(props: CardProps) {
 
   const handleCheck = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(ev.target.checked);
-    console.log(checked, ev.target.checked);
     props.checkCard({
       value: props.value,
       multiplier: props.multiplier,
