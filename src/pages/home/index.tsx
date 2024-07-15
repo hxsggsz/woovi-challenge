@@ -4,10 +4,10 @@ import { formatCurrency } from "@/utils/formatCurrency";
 import { Box, Container, Typography } from "@mui/material";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import wooviLogo from "/woovi.svg";
 import PaymentPart from "./components/paymentPart";
 import { useNavigate } from "react-router";
 import { usePayment } from "@/context/usePayment";
+import Header from "./components/header";
 
 function Home() {
   const { t } = useTranslation();
@@ -75,12 +75,7 @@ function Home() {
         flexDirection: "column",
       }}
     >
-      <Box sx={{ textAlign: "center", marginBottom: "40px" }}>
-        <img src={wooviLogo} alt="woovi logo" />
-        <Typography variant="h1" sx={{ fontSize: 24, fontWeight: 800 }}>
-          {randomName}, {t("main:title")}
-        </Typography>
-      </Box>
+      <Header name={randomName} />
 
       <Card roundedborder="full" {...mainBill} />
 
