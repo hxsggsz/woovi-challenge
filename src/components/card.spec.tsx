@@ -20,7 +20,6 @@ const makeSut = ({
 }: Partial<CardProps>): RenderResult =>
   render(
     <Card
-      id="unique-id"
       label={label}
       value={value}
       checkCard={checkCard}
