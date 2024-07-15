@@ -1,5 +1,5 @@
 import { usePayment } from "@/context/usePayment";
-import Header from "@/components/header";
+import Header from "./components/header";
 import { Box } from "@mui/material";
 import Footer from "./components/footer";
 import CardPayment from "./components/card-payment";
