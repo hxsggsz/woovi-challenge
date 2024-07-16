@@ -15,7 +15,8 @@
     "title": "Pay everything with {{value}}x with credit card",
     "form": {
       "deadline": "Card deadline",
-      "installments": "Installments"
+      "installments": "Installments",
+      "submit": "Pay"
     }
   },
   "pix-payment": {

@@ -15,7 +15,8 @@
     "title": "Pague o restante em {{value}}x no cartão",
     "form": {
       "deadline": "Vencimento do cartão",
-      "installments": "Parcelas"
+      "installments": "Parcelas",
+      "submit": "Pagar"
     }
   },
   "pix-payment": {

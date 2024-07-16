@@ -13,7 +13,7 @@ export interface PaymentData extends CheckCardProps {
 
 export interface PaymentContextProps {
   payment: PaymentData;
-  advanceActivePayment: () => void;
+  advanceActivePayment: (activePayment?: number) => void;
   updatePayment: (payment: PaymentData) => void;
 }
 
@@ -31,10 +31,10 @@ export const PaymentProvider = ({ children }: React.PropsWithChildren) => {
     saveEncryptedPayment(newPayment);
   };
 
-  const advanceActivePayment = () => {
+  const advanceActivePayment = (activePayment?: number) => {
     setPayment((prev) => ({
       ...prev,
-      activePayment: prev.activePayment++,
+      activePayment: activePayment ?? prev.activePayment++,
     }));
 
     saveEncryptedPayment(payment);
@@ -44,7 +44,6 @@ export const PaymentProvider = ({ children }: React.PropsWithChildren) => {
   const onStorageUpdate = (e: StorageEvent) => {
     const { key, newValue } = e;
     if (key === "@p") {
-      console.log(newValue);
       const decodedPayment = decodePaymentData(newValue!);
       setPayment(decodedPayment);
     }
