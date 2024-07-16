@@ -10,6 +10,14 @@
       "banner-message": "Melhor opção de parcelamento"
     }
   },
+  "card-payment": {
+    "of": "de",
+    "title": "Pague o restante em {{value}}x no cartão",
+    "form": {
+      "deadline": "Vencimento do cartão",
+      "installments": "Parcelas"
+    }
+  },
   "pix-payment": {
     "title": "Efetuando pagamento..."
   },

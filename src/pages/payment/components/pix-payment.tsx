@@ -16,6 +16,7 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useTranslation } from "react-i18next";
 import { usePayment } from "@/context/usePayment";
+import Header from "./header";
 
 function PixPayment() {
   const { alert } = useAlert();
@@ -71,95 +72,98 @@ function PixPayment() {
   });
 
   return (
-    <Box
-      sx={{
-        width: 1,
-        pt: "72px",
-        px: "24px",
-        display: "flex",
-        minHeight: "100dvh",
-        placeItems: "center",
-        flexDirection: "column",
-      }}
-    >
-      <Container>
-        <Box
-          sx={{
-            display: "flex",
-            placeItems: "center",
-            flexDirection: "column",
-          }}
-        >
+    <>
+      <Header />
+      <Box
+        sx={{
+          width: 1,
+          pt: "72px",
+          px: "24px",
+          display: "flex",
+          minHeight: "100dvh",
+          placeItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Container>
           <Box
             sx={{
-              border: "2px solid",
-              borderColor: "secondary.main",
-              borderRadius: "10px",
-              width: "332px",
-              padding: "10px",
-            }}
-          >
-            <QRCode
-              size={332}
-              value={qrcodeValue}
-              viewBox={`0 0 332 332`}
-              style={{ height: "auto", maxWidth: "100%" }}
-            />
-          </Box>
-
-          <Button
-            onClick={() => copyQrcode(qrcodeValue)}
-            variant="contained"
-            sx={{ mt: "20px", fontSize: "16px", gap: "10px" }}
-          >
-            {t("payment:qrcode:button")}
-            <FileCopyIcon />
-          </Button>
-
-          <Typography sx={{ color: "info.main", pt: "30px" }}>
-            {t("payment:date")}:
-          </Typography>
-          <Typography sx={{ fontWeight: 800 }}>
-            {new Date(payment.date).toLocaleDateString(LANGUAGE)} -{" "}
-            {new Date(payment.date).toLocaleTimeString(LANGUAGE)}
-          </Typography>
-        </Box>
-
-        <Box>
-          <PaymentStepper {...payment} />
-
-          <Box
-            sx={{
-              pb: "20px",
-              pt: "20px",
               display: "flex",
-              borderBottom: "2px solid",
-              borderColor: "info.50",
-              justifyContent: "space-between",
+              placeItems: "center",
+              flexDirection: "column",
             }}
           >
-            <Typography>CET: 0.5%</Typography>
-            <Typography>
-              Total: {formatCurrency(payment.value * payment.multiplier)}
+            <Box
+              sx={{
+                border: "2px solid",
+                borderColor: "secondary.main",
+                borderRadius: "10px",
+                width: "332px",
+                padding: "10px",
+              }}
+            >
+              <QRCode
+                size={332}
+                value={qrcodeValue}
+                viewBox={`0 0 332 332`}
+                style={{ height: "auto", maxWidth: "100%" }}
+              />
+            </Box>
+
+            <Button
+              onClick={() => copyQrcode(qrcodeValue)}
+              variant="contained"
+              sx={{ mt: "20px", fontSize: "16px", gap: "10px" }}
+            >
+              {t("payment:qrcode:button")}
+              <FileCopyIcon />
+            </Button>
+
+            <Typography sx={{ color: "info.main", pt: "30px" }}>
+              {t("payment:date")}:
+            </Typography>
+            <Typography sx={{ fontWeight: 800 }}>
+              {new Date(payment.date).toLocaleDateString(LANGUAGE)} -{" "}
+              {new Date(payment.date).toLocaleTimeString(LANGUAGE)}
             </Typography>
           </Box>
 
-          <CustomAccordion>
-            <AccordionSummary
-              expandIcon={<ArrowDownwardIcon />}
-              aria-controls="panel1-content"
-              id="panel1-header"
-            >
-              <Typography>{t("payment:accordion:summary")}</Typography>
-            </AccordionSummary>
+          <Box>
+            <PaymentStepper {...payment} />
 
-            <AccordionDetails>
-              <Typography>{t("payment:accordion:content")}</Typography>
-            </AccordionDetails>
-          </CustomAccordion>
-        </Box>
-      </Container>
-    </Box>
+            <Box
+              sx={{
+                pb: "20px",
+                pt: "20px",
+                display: "flex",
+                borderBottom: "2px solid",
+                borderColor: "info.50",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography>CET: 0.5%</Typography>
+              <Typography>
+                Total: {formatCurrency(payment.value * payment.multiplier)}
+              </Typography>
+            </Box>
+
+            <CustomAccordion>
+              <AccordionSummary
+                expandIcon={<ArrowDownwardIcon />}
+                aria-controls="panel1-content"
+                id="panel1-header"
+              >
+                <Typography>{t("payment:accordion:summary")}</Typography>
+              </AccordionSummary>
+
+              <AccordionDetails>
+                <Typography>{t("payment:accordion:content")}</Typography>
+              </AccordionDetails>
+            </CustomAccordion>
+          </Box>
+        </Container>
+      </Box>
+    </>
   );
 }
 

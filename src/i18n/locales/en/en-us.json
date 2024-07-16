@@ -10,6 +10,14 @@
       "banner-message": "Best part option"
     }
   },
+  "card-payment": {
+    "of": "of",
+    "title": "Pay everything with {{value}}x with credit card",
+    "form": {
+      "deadline": "Card deadline",
+      "installments": "Installments"
+    }
+  },
   "pix-payment": {
     "title": "Doing the payment..."
   },
