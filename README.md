@@ -1,30 +1,56 @@
-# React + TypeScript + Vite
+# Woovi challenge frontend junior
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é um teste frontend feito com React utilizando Vite, Material UI, Vitest e TypeScript. 
 
-Currently, two official plugins are available:
+## GitHub Actions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto inclui uma configuração de GitHub Actions que realiza as seguintes verificações e ações automaticamente:
 
-## Expanding the ESLint configuration
+1. **Build**: Verifica se o projeto compila corretamente.
+2. **Lint**: Executa o linter para garantir que o código está seguindo os padrões definidos.
+3. **Testes**: Executa a suite de testes para garantir que tudo está funcionando conforme esperado.
+4. **Deploy**: Caso todas as verificações anteriores passem, o projeto é automaticamente deployado.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Acesso ao Projeto
 
-- Configure the top-level `parserOptions` property like this:
+Você pode acessar o projeto [aqui](https://hxsggsz.github.io/woovi-challenge/).
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+caso queira rodar o projeto localmente:
+
+### Pré-requisitos
+
+- Node.js instalado. Você pode baixá-lo [aqui](https://nodejs.org/).
+- PNPM instalado. Você pode baixá-lo [aqui](https://pnpm.io/).
+- Git instalado. Você pode baixá-lo [aqui](https://git-scm.com/).
+
+### Passos
+1.  **Fork do projeto**
+  clique nesse botão para fazer o seu fork
+
+![image](https://github.com/user-attachments/assets/8d30a7c9-0598-4dd4-b1ba-bf1f5d518e33)
+
+2. **Clone o repositório**
+
+```bash
+git clone https://github.com/seu-usuario/woovi-challenge.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. **Navegue até o diretório do projeto**
+
+```bash
+cd seu-repositorio
+```
+
+4. **Instale as dependências**
+
+```bash
+pnpm install
+```
+
+5. **Rode o projeto localmente**
+
+```bash
+pnpm dev
+```
+
+O servidor de desenvolvimento será iniciado e você poderá acessar o projeto em http://localhost:5173.
