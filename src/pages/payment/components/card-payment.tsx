@@ -104,7 +104,7 @@ function CardPayment() {
 
       <Container>
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
-          <Stack gap={2} width={400}>
+          <Stack gap={2}>
             <TextField
               {...register("name")}
               error={!!errors.name}
@@ -112,7 +112,6 @@ function CardPayment() {
               fullWidth
               label="nome"
             />
-
             <TextField
               label="Cpf"
               {...register("cpf")}
@@ -202,7 +201,7 @@ function CardPayment() {
           </Stack>
         </form>
 
-        <Box>
+        <Box maxWidth={800}>
           <PaymentDate />
           <PaymentInfo />
         </Box>
