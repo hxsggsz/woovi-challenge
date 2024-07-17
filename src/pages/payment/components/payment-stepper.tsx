@@ -2,7 +2,7 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import { Typography } from "@mui/material";
-import { CircleOutlined } from "@mui/icons-material";
+import { CheckCircle, CircleOutlined } from "@mui/icons-material";
 import { nanoid } from "nanoid";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { useTranslation } from "react-i18next";
@@ -42,9 +42,13 @@ function PaymentStepper(props: PaymentStepperProps) {
         <StepLabel
           sx={{ p: 0 }}
           icon={
-            <CircleOutlined
-              color={props.activePayment >= index ? "secondary" : "info"}
-            />
+            props.activePayment >= index + 1 ? (
+              <CheckCircle color="secondary" />
+            ) : (
+              <CircleOutlined
+                color={props.activePayment <= index - 1 ? "info" : "secondary"}
+              />
+            )
           }
         >
           {props.multiplier > 1 && ++index}
