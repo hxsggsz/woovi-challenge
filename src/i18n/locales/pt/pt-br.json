@@ -23,6 +23,7 @@
     "title": "Efetuando pagamento..."
   },
   "payment": {
+    "success-alert": "Pagamento efetuado com sucesso",
     "title": {
       "full-payment-title": "pague sua conta de {{value}} pelo Pix",
       "part-payment-title": "pague a entrada de {{value}} pelo Pix"

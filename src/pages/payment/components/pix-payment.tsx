@@ -1,27 +1,14 @@
-import { LANGUAGE } from "@/constants";
-import { formatCurrency } from "@/utils/formatCurrency";
-import {
-  Box,
-  Accordion,
-  Typography,
-  Button,
-  AccordionSummary,
-  AccordionDetails,
-  styled,
-} from "@mui/material";
+import { Box, Button, styled } from "@mui/material";
 import QRCode from "react-qr-code";
-import PaymentStepper from "./payment-stepper";
 import { useAlert } from "@/context/useAlert";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useTranslation } from "react-i18next";
-import { usePayment } from "@/context/usePayment";
 import Header from "./header";
+import PaymentInfo from "./payment-info";
+import PaymentDate from "./payment-date";
 
 function PixPayment() {
   const { alert } = useAlert();
-
-  const { payment } = usePayment();
 
   const { t } = useTranslation();
 
@@ -57,19 +44,6 @@ function PixPayment() {
       flexDirection: "row",
     },
   }));
-
-  const CustomAccordion = styled(Accordion)(({ theme }) => {
-    return {
-      background: "inherit",
-      border: 0,
-      boxShadow: "0px 0px 0px 0px rgba(0,0,0,0)",
-      borderBottom: "2px solid",
-      borderColor: theme.palette.info.main,
-      "&::before": {
-        opacity: 0,
-      },
-    };
-  });
 
   return (
     <>
@@ -119,48 +93,10 @@ function PixPayment() {
               <FileCopyIcon />
             </Button>
 
-            <Typography sx={{ color: "info.main", pt: "30px" }}>
-              {t("payment:date")}:
-            </Typography>
-            <Typography sx={{ fontWeight: 800 }}>
-              {new Date(payment.date).toLocaleDateString(LANGUAGE)} -{" "}
-              {new Date(payment.date).toLocaleTimeString(LANGUAGE)}
-            </Typography>
+            <PaymentDate />
           </Box>
 
-          <Box>
-            <PaymentStepper {...payment} />
-
-            <Box
-              sx={{
-                pb: "20px",
-                pt: "20px",
-                display: "flex",
-                borderBottom: "2px solid",
-                borderColor: "info.50",
-                justifyContent: "space-between",
-              }}
-            >
-              <Typography>CET: 0.5%</Typography>
-              <Typography>
-                Total: {formatCurrency(payment.value * payment.multiplier)}
-              </Typography>
-            </Box>
-
-            <CustomAccordion>
-              <AccordionSummary
-                expandIcon={<ArrowDownwardIcon />}
-                aria-controls="panel1-content"
-                id="panel1-header"
-              >
-                <Typography>{t("payment:accordion:summary")}</Typography>
-              </AccordionSummary>
-
-              <AccordionDetails>
-                <Typography>{t("payment:accordion:content")}</Typography>
-              </AccordionDetails>
-            </CustomAccordion>
-          </Box>
+          <PaymentInfo />
         </Container>
       </Box>
     </>

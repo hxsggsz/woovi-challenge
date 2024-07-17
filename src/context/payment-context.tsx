@@ -34,7 +34,7 @@ export const PaymentProvider = ({ children }: React.PropsWithChildren) => {
   const advanceActivePayment = (activePayment?: number) => {
     setPayment((prev) => ({
       ...prev,
-      activePayment: activePayment ?? prev.activePayment++,
+      activePayment: (prev.activePayment += activePayment ?? 1),
     }));
 
     saveEncryptedPayment(payment);
@@ -50,6 +50,7 @@ export const PaymentProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   useEffect(() => {
+    console.log(decodePaymentData());
     setPayment(decodePaymentData());
     window.addEventListener("storage", onStorageUpdate);
 
@@ -59,7 +60,11 @@ export const PaymentProvider = ({ children }: React.PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    if (payment.multiplier <= payment.activePayment || isObjectEmpty(payment)) {
+    console.log(payment);
+    if (
+      payment.multiplier < payment.activePayment + 1 ||
+      isObjectEmpty(payment)
+    ) {
       navigate("/woovi-challenge");
     }
   }, [navigate, payment]);

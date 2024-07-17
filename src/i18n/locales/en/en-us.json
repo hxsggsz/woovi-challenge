@@ -23,6 +23,7 @@
     "title": "Doing the payment..."
   },
   "payment": {
+    "success-alert": "Payment with success",
     "title": {
       "full-payment-title": "pay your invoice entry {{value}} with Pix",
       "part-payment-title": "pay your invoice {{value}} with Pix"
