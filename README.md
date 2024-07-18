@@ -13,7 +13,7 @@ Este projeto inclui uma configuração de GitHub Actions que realiza as seguinte
 
 ## Acesso ao Projeto
 
-Você pode acessar o projeto [aqui](https://hxsggsz.github.io/woovi-challenge/).
+Você pode acessar o projeto [aqui](https://hxsggsz.github.io/woovi-challenge/#/woovi-challenge/).
 
 caso queira rodar o projeto localmente:
 
@@ -38,7 +38,7 @@ git clone https://github.com/seu-usuario/woovi-challenge.git
 3. **Navegue até o diretório do projeto**
 
 ```bash
-cd seu-repositorio
+cd woovi-challenge
 ```
 
 4. **Instale as dependências**
