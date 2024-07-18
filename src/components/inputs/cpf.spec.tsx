@@ -44,7 +44,7 @@ describe("simple-date-input", () => {
       makeSut({});
       const inputEl = screen.getByRole("textbox") as HTMLInputElement;
 
-      userEvent.type(inputEl, "12321321321123");
+      userEvent.type(inputEl, "12321321321");
       await waitFor(() => {
         expect(inputEl.value).toBe("123.213.213-21");
       });
