@@ -2,6 +2,7 @@
   "name": "woovi-challenge",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://hxsggsz.github.io/woovi-challenge/",
   "type": "module",
   "scripts": {
     "dev": "vite",
