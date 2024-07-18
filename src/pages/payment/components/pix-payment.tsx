@@ -22,7 +22,7 @@ function PixPayment() {
       // simulate an api call
       setTimeout(() => {
         window.open(
-          "http://localhost:5173/woovi-challenge/pix-payment",
+          `${import.meta.env.BASE_URL}/pix-payment`,
           "",
           "height=800,width=400,scrollbars=no",
         );
