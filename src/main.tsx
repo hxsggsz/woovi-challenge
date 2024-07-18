@@ -8,11 +8,11 @@ import Footer from "@/components/footer.tsx";
 import "./i18n";
 import { AlertProvider } from "@/context/alert-context.tsx";
 import { PaymentProvider } from "@/context/payment-context.tsx";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <ThemeManagerProvider>
         <PaymentProvider>
           <AlertProvider>
@@ -23,6 +23,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           </AlertProvider>
         </PaymentProvider>
       </ThemeManagerProvider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
 );
